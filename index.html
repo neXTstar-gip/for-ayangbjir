@@ -1,191 +1,200 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5" name="viewport" />
-    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Gunakan font Shippori Antique untuk nuansa yang unik -->
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap" rel="stylesheet">
-    <!-- SweetAlert2 untuk pop-up alert yang keren -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark/dark.css">
-    <!-- Font Awesome untuk ikon -->
-    <script src="https://kit.fontawesome.com/4f3ce16e3e.js" crossorigin="anonymous"></script>
-    <!-- File CSS eksternal -->
-    <link href="https://kuisberhadiah.likeadream.repl.co/style.css" rel="stylesheet" type="text/css" />
-    <title>Anniversary Pacaran 1 Bulan</title>
-    <style>
-      /* Jika perlu override style secara langsung */
-      body {
-         background-image: url("https://i.postimg.cc/pLd7XMrW/wallpaper.jpg");
-         background-repeat: no-repeat;
-         background-size: cover;
-      }
-      body::before {
-         opacity: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Layer blur untuk efek transisi -->
-    <div id="bodyblur"></div>
-    <!-- Konten utama -->
-    <div id="konten">
-      <div id="fotoloveu">
-        <div class="image">
-          <!-- Gambar animasi (misal, GIF anniversary) -->
-          <img src="https://i.postimg.cc/Rhzfr0FG/hbd.gif" id="animasi" width="130px" height="130px" />
-        </div>
+   <head>
+      <meta charset="UTF-8"/>
+      <meta content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5" name="viewport"/>
+      <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap" rel="stylesheet">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark/dark.css">
+      <script src="https://kit.fontawesome.com/4f3ce16e3e.js" crossorigin="anonymous"></script>
+      <link href="https://kuisberhadiah.likeadream.repl.co/style.css" rel="stylesheet" type="text/css" />
+      <!--<script src="https://bukadulu.likeadream.repl.co/script.js"></script>-->
+      <title>Anniversary Pacaran 1 Bulan</title>
+      <!-- 
+         This code was made by @mrismanaziz
+         Telegram: t.me/mrismanaziz
+         Instagram: instagram.com/mrismanaziz_
+      -->
+      <style>
+         body { background-image: url("https://i.postimg.cc/pLd7XMrW/wallpaper.jpg"); background-repeat: no-repeat; background-size: cover; }
+         body::before { opacity:0; }
+         /* Style untuk teks "I love you more babe" */
+         #loveText {
+            display: none;
+            text-align: center;
+            font-size: 24px;
+            color: #FF4081;
+            margin-top: 20px;
+            font-family: 'Shippori Antique', sans-serif;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="bodyblur"></div>
+      <div id="konten">
+         <div id="fotoloveu">
+            <div class="image">
+               <!-- Pastikan URL gif valid, lo bisa ganti sesuai keinginan -->
+               <img src="https://i.postimg.cc/Rhzfr0FG/hbd.gif" id="animasi" width="130px" height="130px"/>
+            </div>
+         </div>
+         <p class='catatan' id='koteks'>
+            <marquee scrollamount="8" id="marq">
+               <i id="spasi"></i>
+               Yeay makasi ya 😁<i id="spasi"></i>
+               Kapan nih ditraktirinnya? &#128511;<i id="spasi"></i>
+               Candaa candaa ☺️<i id="spasi"></i>
+               Selamat 1 Bulan, sayang! &#129395;&#129395;&#129395;
+            </marquee>
+         </p>
+         <!-- Teks tambahan saat bunga mekar -->
+         <div id="loveText">I love you more babe</div>
+         <!-- Tombol WA -->
+         <div id="tombWA"><a class="button" onClick="bukaWa();">Kirim Pesan</a></div>
       </div>
-      <p class='catatan' id='koteks'>
-        <marquee scrollamount="8" id="marq">
-          <i id="spasi"></i>
-          Yeay makasi ya 😁<i id="spasi"></i>
-          Kapan nih ditraktirinnya? &#128511;<i id="spasi"></i>
-          Candaa candaa ☺️<i id="spasi"></i>
-          Selamat 1 Bulan, sayang! maaf belum bisa ngasih hadiah dulu soalnya kita libur hehehe &#129395;&#129395;&#129395;
-        </marquee>
-      </p>
-      <!-- Tombol WhatsApp untuk kirim pesan -->
-      <div id="tombWA"><a class='button' onClick='bukaWa();'>Kirim Pesan</a></div>
-    </div>
-    
-    <script>
-      // Fungsi play() untuk memutar musik latar
-      function play() {
-         var audio = new Audio('https://kuisberhadiah.likeadream.repl.co/musiktiktok.m4a');
-         audio.play();
-         audio.loop = true;
-         audio.addEventListener('ended', function() {
-            this.currentTime = 0;
-            this.play();
-         }, false);
-      }
-
-      // Fungsi untuk buka WhatsApp dengan pesan yang sudah diisi
-      function bukaWa() {
-         window.location = "https://api.whatsapp.com/send?phone=&text=" + window.nama + " udah liat semuanya. Enak aja, traktir ya! %0A%0ABtw, makasih udah ngucapin ><";
-      }
-
-      // SweetAlert2 untuk tanya nama user
-      async function mulai() {          	
-         var { value: nama } = await Swal.fire({
-             title: 'Nama kamu sayang?',
-             input: 'text',
-             confirmButtonText: 'Lanjut',
-             showCancelButton: false,
-         });
-         if(nama && nama.length < 11){
-            play();
-            window.nama = nama;
-            await Swal.fire('Hai, ' + nama + ' manis ツ');                    
-            await Swal.fire('Cie yang 1 bulan nih, selamat ya! &#128514;');
-            await Swal.fire('Selamat anniversary 1 bulan, sayang!');
-            await Swal.fire('Panjang umur & sehat selalu <3');
-            pilihwarna();
-         } else {
-            await Swal.fire('Ups!', 'Nama tidak boleh kosong atau lebih dari 10 karakter, ya!');
-            mulai();
+      <script>
+         // Fungsi play() untuk memutar musik latar
+         function play() {
+            var audio = new Audio('https://kuisberhadiah.likeadream.repl.co/musiktiktok.m4a');
+            audio.play();
+            audio.loop = true;
+            audio.addEventListener('ended', function() {
+               this.currentTime = 0;
+               this.play();
+            }, false);
          }
-      }
-      mulai();
 
-      // Fungsi untuk memulai animasi dengan pilihan warna
-      async function pilihwarna(){
-         var { isConfirmed: warna } = await Swal.fire({
-             title: 'Oh iya, ' + nama + ' mau pilih warna apa nih?',
-             text: 'Pilih tema sesuai selera kamu!',
-             showCancelButton: true,
-             confirmButtonText: 'Biru',
-             cancelButtonText: 'Merah',
-         });
-         if(warna){
-            await Swal.fire('Yeayy!', 'Kalo kamu pilih <b>Biru</b>, traktir harus lebih banyak ya &#129315;!');
-            var { isConfirmed: warna2 } = await Swal.fire({
-               title: nama + ' yakin pilih Biru?', 
-               text: 'Konfirmasi pilihan kamu.',
-               showCancelButton: true,
-               confirmButtonText: 'Yakin',
-               cancelButtonText: 'Ganti',
+         // Fungsi untuk buka WhatsApp
+         function bukaWa(){
+            window.location = "https://api.whatsapp.com/send?phone=&text=" + window.nama + " udah liat semuanya. Enak aja, traktir ya! %0A%0A" + "Btw, makasih udah ngucapin ><";
+         }
+
+         // SweetAlert2 untuk meminta nama user
+         async function mulai(){
+            var { value: nama } = await Swal.fire({
+               title: 'Nama kamu?',
+               input: 'text',
+               confirmButtonText: 'Lanjut',
+               showCancelButton: false,
             });
-            if(warna2){
-               await Swal.fire('Oke!', `Sekarang lihat ini ya &#10084;&#65039;`);
-               expl(); StartMarquee();
+            if(nama && nama.length < 11){
+               play();
+               window.nama = nama;
+               await Swal.fire('Hai, ' + nama + ' manis ツ');                    
+               await Swal.fire('Cie yang 1 bulan nih, selamat ya! &#128514;');
+               await Swal.fire('Selamat anniversary 1 bulan, sayang!');
+               await Swal.fire('Panjang umur & sehat selalu <3');
+               pilihwarna();
             } else {
-               await Swal.fire('Oke, pilih Merah!', 'Merah juga keren, asal traktirnya oke &#129315;');
-               expl(); StartMarquee();
-            }
-         } else {
-            await Swal.fire('Yeayy!', 'Kalo kamu pilih <b>Merah</b>, traktir harus lebih banyak ya &#129315;!');
-            var { isConfirmed: warna2 } = await Swal.fire({
-               title: nama + ' yakin pilih Merah?', 
-               text: 'Konfirmasi pilihan kamu.',
-               showCancelButton: true,
-               confirmButtonText: 'Ganti',
-               cancelButtonText: 'Yakin',
-            });
-            if(warna2){    
-               await Swal.fire('Oke, pilih Biru!', 'Sama aja, asalkan traktirnya banyak ya &#129315;');
-               expl(); StartMarquee();
-            } else {
-               await Swal.fire('Oke!', `Sekarang lihat ini ya &#10084;&#65039;`);
-               expl(); StartMarquee();
+               await Swal.fire('Ups!', 'Nama tidak boleh kosong atau lebih dari 10 karakter, ya!');
+               mulai();
             }
          }
-      }
+         mulai();
 
-      // Fungsi untuk memulai animasi utama
-      function expl(){
-         document.getElementById('bodyblur').style.opacity = "1";
-         document.getElementById('bodyblur').style.visibility = "visible";
-         setTimeout(duar, 200);
-      }
-      
-      function duar(){
-         var e1 = document.getElementById('animasi');
-         e1.classList.add("degdeg");
-         document.getElementById('konten').style.top = "0";
-         document.getElementById('fotoloveu').style.opacity = "1";
-         document.getElementById('fotoloveu').style.height = "140px";
-         document.getElementById('fotoloveu').style.margin = "50px 0 0 0";
-         document.getElementById('koteks').style.opacity = "1";
-         setTimeout(tombol, 4000);
-         setInterval(createHeart, 200);
-         document.body.style.backgroundColor = "#000";
-      }
-      
-      function tombol(){
-         document.getElementById('tombWA').style.visibility = "visible";
-         document.getElementById('tombWA').style.opacity = "1";
-      }
-      
-      function createHeart(){
-         const heart = document.createElement("div");
-         heart.className = "fas fa-heart";
-         heart.style.left = (Math.random()*90)+"vw";
-         heart.style.animationDuration = (Math.random()*3)+2+"s";
-         document.body.appendChild(heart);
-      }
-      
-      setInterval(function(){
-         var heartArr = document.querySelectorAll(".fa-heart");
-         if(heartArr.length > 100){
-            heartArr[0].remove();
+         // Fungsi untuk memilih tema warna, dengan animasi bunga mekar
+         async function pilihwarna(){
+            var { isConfirmed: warna } = await Swal.fire({
+               title: 'Oh iya, ' + nama + ' mau pilih warna apa nih?',
+               text: 'Pilih tema sesuai selera kamu!',
+               showCancelButton: true,
+               confirmButtonText: 'Biru',
+               cancelButtonText: 'Merah',
+            });
+            if(warna){
+               await Swal.fire('Yeayy!', 'Kalo kamu pilih <b>Biru</b>, traktir harus lebih banyak ya &#129315;!');
+               var { isConfirmed: warna2 } = await Swal.fire({
+                  title: nama + ' yakin pilih Biru?', 
+                  text: 'Konfirmasi pilihan kamu.',
+                  showCancelButton: true,
+                  confirmButtonText: 'Yakin',
+                  cancelButtonText: 'Ganti',
+               });
+               if(warna2){
+                  await Swal.fire('Oke!', `Sekarang lihat ini ya &#10084;&#65039;`);
+                  expl();
+                  StartMarquee();
+               } else {
+                  await Swal.fire('Oke, pilih Merah!', 'Merah juga keren, asal traktirnya oke &#129315;');
+                  expl();
+                  StartMarquee();
+               }
+            } else {
+               await Swal.fire('Yeayy!', 'Kalo kamu pilih <b>Merah</b>, traktir harus lebih banyak ya &#129315;!');
+               var { isConfirmed: warna2 } = await Swal.fire({
+                  title: nama + ' yakin pilih Merah?', 
+                  text: 'Konfirmasi pilihan kamu.',
+                  showCancelButton: true,
+                  confirmButtonText: 'Ganti',
+                  cancelButtonText: 'Yakin',
+               });
+               if(warna2){    
+                  await Swal.fire('Oke, pilih Biru!', 'Sama aja, asalkan traktirnya banyak ya &#129315;');
+                  expl();
+                  StartMarquee();
+               } else {
+                  await Swal.fire('Oke!', `Sekarang lihat ini ya &#10084;&#65039;`);
+                  expl();
+                  StartMarquee();
+               }
+            }
          }
-      },100);
-      
-      function StartMarquee(){
-         var marquee = document.getElementById("marq");
-         marquee.start();
-      }
-      
-      function StopMarquee(){
-         var marquee = document.getElementById("marq");
-         marquee.stop();
-      }
-      StopMarquee();
-    </script>
-  </body>
+
+         // Fungsi untuk memulai animasi transisi (explosion)
+         function expl(){
+            document.getElementById('bodyblur').style.opacity = "1";
+            document.getElementById('bodyblur').style.visibility = "visible";
+            setTimeout(duar, 200);
+         }
+         
+         function duar(){
+            var e1 = document.getElementById('animasi');
+            e1.classList.add("degdeg");
+            document.getElementById('konten').style.top = "0";
+            document.getElementById('fotoloveu').style.opacity = "1";
+            document.getElementById('fotoloveu').style.height = "140px";
+            document.getElementById('fotoloveu').style.margin = "50px 0 0 0";
+            document.getElementById('koteks').style.opacity = "1";
+            // Tampilkan teks "I love you more babe" saat bunga mekar
+            document.getElementById('loveText').style.display = "block";
+            setTimeout(tombol, 4000);
+            setInterval(createHeart, 200);
+            document.body.style.backgroundColor = "#000";
+         }
+         
+         function tombol(){
+            document.getElementById('tombWA').style.visibility = "visible";
+            document.getElementById('tombWA').style.opacity = "1";
+         }
+         
+         function createHeart(){
+            const heart = document.createElement("div");
+            heart.className = "fas fa-heart";
+            heart.style.left = (Math.random()*90)+"vw";
+            heart.style.animationDuration = (Math.random()*3)+2+"s";
+            document.body.appendChild(heart);
+         }
+         
+         setInterval(function(){
+            var heartArr = document.querySelectorAll(".fa-heart");
+            if(heartArr.length > 100){
+               heartArr[0].remove();
+            }
+         }, 100);
+         
+         function StartMarquee(){
+            var marquee = document.getElementById("marq");
+            marquee.start();
+         }
+         
+         function StopMarquee(){
+            var marquee = document.getElementById("marq");
+            marquee.stop();
+         }
+         StopMarquee();
+      </script>
+   </body>
 </html>
